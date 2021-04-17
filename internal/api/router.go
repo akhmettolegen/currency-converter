@@ -16,6 +16,10 @@ func New(app application.Application) (*gin.Engine, error) {
 	{
 		welcome.GET("/welcome", handler.Welcome)
 	}
+	converter := v1.Group("converter")
+	{
+		converter.POST("", handler.Convert)
+	}
 
 	return router, nil
 }
