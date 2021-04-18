@@ -1,11 +1,8 @@
 package converter
 
 import (
-	"encoding/json"
 	"github.com/akhmettolegen/currency-converter/pkg/config"
 	"github.com/akhmettolegen/currency-converter/pkg/model"
-	"io/ioutil"
-	"os"
 )
 
 type Manager struct {
@@ -15,24 +12,10 @@ type Manager struct {
 
 func Get() *Manager{
 	config := config.Get()
-
-	codePath := os.Getenv("GOPATH") + "/src/github.com/akhmettolegen/currency-converter/pkg/converter/currency-rate.json"
-	jsonFile, err := os.Open(codePath)
-	codes := map[model.Currency]float64{}
-	if err == nil {
-		defer jsonFile.Close()
-		byteValue, err := ioutil.ReadAll(jsonFile)
-		if err != nil {
-			return nil
-		}
-
-		if err = json.Unmarshal(byteValue, &codes); err != nil {
-			return nil
-		}
-	}
+	rates := GetCurrencyRate()
 
 	return &Manager{
 		Config: config,
-		CurrencyRate: &codes,
+		CurrencyRate: rates.Rate,
 	}
 }
