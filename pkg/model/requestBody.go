@@ -2,6 +2,13 @@ package model
 
 type RequestBody struct {
 	Amount float64 `json:"amount"`
-	From string `json:"from"`
-	To string `json:"to"`
+	Currency Currency `json:"currency"`
 }
+
+type Currency string
+const(
+	CurrencyUSD Currency = "USD"
+	CurrencyEUR  = "EUR"
+	CurrencyRUB = "RUB"
+	CurrencyKZT = "KZT"
+)
