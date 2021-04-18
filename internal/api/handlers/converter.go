@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler)Convert(ctx *gin.Context) {
+func (h *Handler) Convert(ctx *gin.Context) {
 
 	var body model.RequestBody
 	if err := ctx.ShouldBindJSON(&body); err != nil {

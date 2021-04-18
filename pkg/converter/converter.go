@@ -5,11 +5,15 @@ import (
 	"github.com/akhmettolegen/currency-converter/pkg/model"
 )
 
-func (m *Manager)Converter(body *model.RequestBody) *model.ResponseBody {
+func (m *Manager) Converter(body *model.RequestBody) *model.ResponseBody {
 
-	result := body.Amount * 100
+	codes := *m.CurrencyRate
+
 	response := &model.ResponseBody{
-		Result: fmt.Sprintf("%.2f %s", result, body.To),
+		EUR: fmt.Sprintf("%.4f %s", body.Amount * codes[body.Currency] / codes[model.CurrencyEUR], model.CurrencyEUR),
+		USD: fmt.Sprintf("%.4f %s", body.Amount * codes[body.Currency] / codes[model.CurrencyUSD], model.CurrencyUSD),
+		RUB: fmt.Sprintf("%.4f %s", body.Amount * codes[body.Currency] / codes[model.CurrencyRUB], model.CurrencyRUB),
+		KZT: fmt.Sprintf("%.4f %s", body.Amount * codes[body.Currency] / codes[model.CurrencyKZT], model.CurrencyKZT),
 	}
 
 	return response
