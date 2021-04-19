@@ -12,7 +12,10 @@ type Manager struct {
 
 func Get() *Manager{
 	config := config.Get()
-	rates := GetCurrencyRate()
+	rates, err := GetCurrencyRate()
+	if err != nil {
+		return nil
+	}
 
 	return &Manager{
 		Config: config,
