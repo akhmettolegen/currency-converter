@@ -8,7 +8,7 @@ type RequestBody struct {
 type Currency string
 const(
 	CurrencyUSD Currency = "USD"
-	CurrencyEUR  = "EUR"
+	CurrencyEUR = "EUR"
 	CurrencyRUB = "RUB"
 	CurrencyKZT = "KZT"
 )
