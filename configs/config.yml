@@ -1,3 +1,11 @@
 server:
   host: "localhost"
   port: 3000
+db:
+  user: "postgres"
+  pass: "MKmOPKMOkkndOputuxlvleElq="
+  name: "adaptive_db"
+  host: "84.252.128.7"
+  port: 5432
+  mode: "disable"
+  auto_migrate: false

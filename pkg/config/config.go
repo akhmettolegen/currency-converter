@@ -10,6 +10,15 @@ type Config struct {
 		Host string `yaml:"host"`
 		Port int `yaml:"port"`
 	} `yaml:"server"`
+	DB struct {
+	User        string `yaml:"user"`
+	Pass        string `yaml:"pass"`
+	Name        string `yaml:"name"`
+	Host        string `yaml:"host"`
+	Port        int    `yaml:"port"`
+	Mode        string `yaml:"mode"`
+	AutoMigrate bool   `yaml:"auto_migrate"`
+} `yaml:db`
 }
 
 func Get() *Config {
